@@ -69,17 +69,29 @@ Write validation report to `.codemachine/artifacts/validation_report.md`:
 {proceed | fix issues first}
 ```
 
-## COMPLETION SIGNAL
+---
 
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file - chat messages are NOT detected.
+
+**If all validations PASS:**
 ```json
 {
-  "action": "{complete | loop}",
-  "agent": "spec-tester",
-  "issues": {count},
-  "summary": "Validation {passed|failed}: {details}"
+  "action": "complete",
+  "reason": "All validations passed: {N} tests passed, {M}% coverage"
 }
 ```
 
-If issues found, signal loop to return to implementation.
+**If there are FAILURES that need fixing:**
+```json
+{
+  "action": "loop",
+  "reason": "Validation failed: {N} issues found - {brief description}"
+}
+```
+
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
 
 {error_escalation}
+

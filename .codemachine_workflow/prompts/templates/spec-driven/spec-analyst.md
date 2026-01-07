@@ -135,17 +135,22 @@ When all features are documented, summarize:
 >
 > I've created the requirements spec and feature files. Ready for the Architect to design the system!
 
-Write completion signal to `.codemachine/memory/directive.json`:
+---
+
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file - chat messages are NOT detected.
+
+After writing all artifacts, you **MUST** write this file:
+
 ```json
 {
   "action": "complete",
-  "agent": "spec-analyst",
-  "artifacts": [
-    ".codemachine/artifacts/specs/01_requirements.md",
-    ".codemachine/artifacts/specs/features/*.feature.md"
-  ],
-  "summary": "Documented {N} features with acceptance criteria and scenarios"
+  "reason": "Documented {N} features with acceptance criteria and scenarios"
 }
 ```
 
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+

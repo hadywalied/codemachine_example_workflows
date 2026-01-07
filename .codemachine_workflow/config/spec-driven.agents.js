@@ -40,13 +40,13 @@ const specDrivenAgents = [
     // ───────────────────────────────────────────────────────────
     {
         id: 'spec-architect',
-        name: 'Marcus [Architect]',
+        name: 'Atef [Architect]',
         description: 'Technical architecture design from specs',
         promptPath: path.join(promptsDir, 'spec-architect.md'),
     },
     {
         id: 'spec-api-designer',
-        name: 'Aria [API]',
+        name: 'Essam [API]',
         description: 'OpenAPI specification generation',
         promptPath: path.join(promptsDir, 'spec-api-designer.md'),
     },

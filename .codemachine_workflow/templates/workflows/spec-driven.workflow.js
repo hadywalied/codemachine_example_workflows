@@ -40,29 +40,17 @@ export default {
     ],
 
     steps: [
-        // ════════════════════════════════════════════
-        // DISCOVERY PHASE - Interactive spec gathering
-        // ════════════════════════════════════════════
         separator("∴ Discovery Phase ∴"),
         resolveStep('spec-po', {}),
         resolveStep('spec-analyst', {}),
 
-        // ════════════════════════════════════════════
-        // DESIGN PHASE - Architecture & API design
-        // ════════════════════════════════════════════
         separator("∴ Design Phase ∴"),
         resolveStep('spec-architect', {}),
         resolveStep('spec-api-designer', {}),
 
-        // ════════════════════════════════════════════
-        // IMPLEMENTATION PHASE - Parallel code generation
-        // ════════════════════════════════════════════
         separator("∴ Implementation Phase ∴"),
         resolveStep('spec-impl-orchestrator', {}),
 
-        // ════════════════════════════════════════════
-        // REVIEW LOOP - Test and iterate
-        // ════════════════════════════════════════════
         separator("⟲ Review Loop ⟲"),
         resolveStep('spec-tester', { interactive: false }),
         resolveModule('spec-review', { interactive: false, loopSteps: 2 }),

@@ -68,9 +68,22 @@ export async function create(req: Request, res: Response) {
 
 ## COMPLETION
 
-End with a summary line:
-```
-Summary: Created {N} routes and {M} handlers for API layer
+---
+
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file.
+
+After generating all files, you **MUST** write:
+
+```json
+{
+  "action": "complete",
+  "reason": "Created {N} routes and {M} handlers for API layer"
+}
 ```
 
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+

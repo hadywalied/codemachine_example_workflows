@@ -80,9 +80,22 @@ Map tests directly to specs:
 
 ## COMPLETION
 
-End with a summary line:
-```
-Summary: Created {N} unit tests, {M} integration tests covering {P}% of acceptance criteria
+---
+
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file.
+
+After generating all tests, you **MUST** write:
+
+```json
+{
+  "action": "complete",
+  "reason": "Created {N} unit tests, {M} integration tests covering {P}% of acceptance criteria"
+}
 ```
 
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+

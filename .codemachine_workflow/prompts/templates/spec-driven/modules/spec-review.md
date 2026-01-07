@@ -46,26 +46,29 @@ Fix instructions format:
 - **Fix**: {how to fix}
 ```
 
-## COMPLETION SIGNAL
+---
 
-For completion:
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json`. The workflow ONLY reads this file - chat messages are NOT detected.
+
+**For successful completion:**
 ```json
 {
   "action": "complete",
-  "summary": "All validations passed after {N} iterations"
+  "reason": "All validations passed after {N} iterations"
 }
 ```
 
-For loop:
+**To loop back and fix issues:**
 ```json
 {
   "action": "loop",
-  "loopSteps": 2,
-  "summary": "Found {N} issues, returning to implementation"
+  "reason": "Found {N} issues, returning to implementation"
 }
 ```
 
-For escalation:
+**For escalation (max iterations reached):**
 ```json
 {
   "action": "checkpoint",
@@ -73,4 +76,7 @@ For escalation:
 }
 ```
 
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+

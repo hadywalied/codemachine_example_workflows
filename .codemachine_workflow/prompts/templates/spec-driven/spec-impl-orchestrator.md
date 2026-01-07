@@ -124,14 +124,30 @@ After successful completion:
 
 **7. Completion Signal**
 
-Write to `.codemachine/memory/directive.json`:
+---
+
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file - chat messages are NOT detected.
+
+After all sub-agents complete, you **MUST** write:
+
 ```json
 {
   "action": "complete",
-  "agent": "spec-impl-orchestrator",
-  "artifacts": ["src/", "tests/"],
-  "summary": "Generated {N} source files across data, API, UI, and test layers"
+  "reason": "Generated {N} source files across data, API, UI, and test layers"
 }
 ```
 
+**If there was an error**, write:
+```json
+{
+  "action": "error",
+  "reason": "Sub-agent {name} failed: {error details}"
+}
+```
+
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+

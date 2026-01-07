@@ -101,4 +101,22 @@ Then guide the conversation through:
 
 End by writing the calibration document and signaling handoff.
 
+---
+
+## ⚠️ MANDATORY: Directive File Output
+
+**CRITICAL:** After completing your task, you **MUST** write to `.codemachine/memory/directive.json`. The workflow ONLY reads this file to know your status.
+
+After writing the calibration document, you **MUST** write:
+
+```json
+{
+  "action": "complete",
+  "reason": "Project calibrated as {size}. Ready for requirements analysis."
+}
+```
+
+**DO NOT** just report completion in chat - you MUST write this file.
+
 {error_escalation}
+

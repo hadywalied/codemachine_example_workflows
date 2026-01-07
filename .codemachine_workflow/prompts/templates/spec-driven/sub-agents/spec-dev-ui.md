@@ -70,9 +70,22 @@ export function {Feature}Page() {
 
 ## COMPLETION
 
-End with a summary line:
-```
-Summary: Created {N} components and {M} pages for UI layer
+---
+
+## MANDATORY: Directive File Output
+
+**CRITICAL:** You **MUST** write to `.codemachine/memory/directive.json` when done. The workflow ONLY reads this file.
+
+After generating all files, you **MUST** write:
+
+```json
+{
+  "action": "complete",
+  "reason": "Created {N} components and {M} pages for UI layer"
+}
 ```
 
+**REMEMBER:** Only two fields: `action` and `reason`. You MUST write this file.
+
 {error_escalation}
+
