@@ -1,6 +1,7 @@
 export default {
     name: 'Spec-Driven Development',
     controller: true,
+    specification: false,
 
     tracks: {
         question: 'What type of application are you building?',
