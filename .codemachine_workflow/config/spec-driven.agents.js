@@ -55,6 +55,12 @@ const specDrivenAgents = [
     // Implementation Phase
     // ───────────────────────────────────────────────────────────
     {
+        id: 'spec-setup',
+        name: 'Setup',
+        description: 'Project scaffolding and initialization',
+        promptPath: path.join(promptsDir, 'spec-setup.md'),
+    },
+    {
         id: 'spec-impl-orchestrator',
         name: 'Orchestrator',
         description: 'Coordinates parallel code generation',

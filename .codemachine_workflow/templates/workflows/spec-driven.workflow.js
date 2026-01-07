@@ -4,15 +4,19 @@ export default {
     specification: false,
 
     tracks: {
-        question: 'What type of application are you building?',
+        question: 'What are we working on?',
         options: {
-            api: {
-                label: 'API Only',
-                description: 'Backend REST API without UI'
+            new_project: {
+                label: 'New Project',
+                description: 'Build something from scratch'
             },
-            fullstack: {
-                label: 'Full-Stack',
-                description: 'Complete application with UI and API'
+            existing_app: {
+                label: 'Existing App',
+                description: 'Add features or modify existing code'
+            },
+            refactor: {
+                label: 'Refactor',
+                description: 'Improve existing code structure without adding features'
             },
         },
     },
@@ -49,6 +53,7 @@ export default {
         resolveStep('spec-api-designer', {}),
 
         separator("∴ Implementation Phase ∴"),
+        resolveStep('spec-setup', {}),
         resolveStep('spec-impl-orchestrator', {}),
 
         separator("⟲ Review Loop ⟲"),
