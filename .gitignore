@@ -1,4 +1,7 @@
 .idea
 .codemachine
+.codemachine_bk*
 
 node_modules
+dist
+*.local
