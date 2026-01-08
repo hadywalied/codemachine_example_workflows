@@ -1,105 +1,116 @@
-# Spec-Driven Development Workflow
+# CodeMachine Workflow Examples
 
-> Build applications from specifications through interactive agent conversations.
+Example workflows for [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI)
 
-## 🚨 Important: Installation
+## Available Workflows
 
-**DO NOT simply copy files** - this will break other workflows!
+### App Builder Workflow
 
-Use the install script which properly **appends** agents to existing configs:
+A simple, conversational workflow to build React applications. Located in `app-builder-workflow/`.
 
-```bash
-# Linux/Mac
-cd .codemachine_workflow
-chmod +x install.sh
-./install.sh
+**Features:**
+- Interactive Product Owner gathers requirements through conversation
+- Technical Architect creates specifications
+- Automatic project scaffolding with React + Vite + TypeScript
+- Parallel code generation via sub-agents
+- Automated testing and fix loops
 
-# Windows (manual steps below)
-```
-
-### Windows Manual Installation
-
-1. **Copy prompts** (safe - uses dedicated subfolder):
-```powershell
-$CM_DIR = "$HOME\.codemachine\resources\0.8.0"
-Copy-Item -Recurse prompts\templates\spec-driven "$CM_DIR\prompts\templates\spec-driven"
-```
-
-2. **Copy workflow** (safe - unique filename):
-```powershell
-Copy-Item templates\workflows\spec-driven.workflow.js "$CM_DIR\templates\workflows\"
-```
-
-3. **Copy agent config files**:
-```powershell
-Copy-Item config\spec-driven.agents.js "$CM_DIR\config\"
-Copy-Item config\spec-driven.sub-agents.js "$CM_DIR\config\"
-Copy-Item config\spec-driven.modules.js "$CM_DIR\config\"
-```
-
-4. **Append to existing configs** - Add these lines to the end of each file:
-
-**`$CM_DIR\config\main.agents.js`**:
-```javascript
-const specDrivenAgents = require('./spec-driven.agents.js');
-module.exports = [...module.exports, ...specDrivenAgents];
-```
-
-**`$CM_DIR\config\sub.agents.js`**:
-```javascript
-const specDrivenSubAgents = require('./spec-driven.sub-agents.js');
-module.exports = [...module.exports, ...specDrivenSubAgents];
-```
-
-**`$CM_DIR\config\modules.js`**:
-```javascript
-const specDrivenModules = require('./spec-driven.modules.js');
-module.exports = [...module.exports, ...specDrivenModules];
-```
+**Workflow Steps:**
+1. PO (Interactive) - Gather requirements through conversation
+2. Architect (Auto) - Create technical specification
+3. Checkpoint - User reviews spec before coding
+4. Setup (Auto) - Scaffold project with React + Vite
+5. Developer (Auto) - Generate code via sub-agents
+6. Tester (Auto + Loop) - Validate and fix issues
 
 ---
 
-## 🔄 Workflow Overview
+### Spec-Driven Development Workflow
 
-```
-Discovery Phase:     spec-po → spec-analyst
-Design Phase:        spec-architect → spec-api-designer
-Implementation:      orchestrator → [data] → [api & ui] → [tests]
-Review Loop:         spec-tester ↔ spec-review
-```
+A more comprehensive workflow with detailed specifications. Located in `spec-driven-workflow/`.
 
-## 📁 Directory Structure
+**Workflow Steps:**
+1. Discovery Phase: PO and Analyst gather requirements
+2. Design Phase: Architect and API Designer create specifications
+3. Implementation: Orchestrator coordinates parallel code generation
+4. Review Loop: Tester validates, Review module triggers fixes
 
-```
-.codemachine_workflow/
-├── install.sh                          # Installation script
-├── config/
-│   ├── spec-driven.agents.js           # Main agents (append to main.agents.js)
-│   ├── spec-driven.sub-agents.js       # Sub-agents (append to sub.agents.js)
-│   └── spec-driven.modules.js          # Modules (append to modules.js)
-├── prompts/
-│   └── templates/
-│       └── spec-driven/                # All prompts in dedicated folder
-│           ├── spec-po.md
-│           ├── spec-analyst.md
-│           ├── spec-analyst-chained/
-│           ├── spec-architect.md
-│           ├── spec-api-designer.md
-│           ├── spec-impl-orchestrator.md
-│           ├── spec-tester.md
-│           ├── sub-agents/
-│           └── modules/
-└── templates/
-    └── workflows/
-        └── spec-driven.workflow.js     # Workflow definition
+---
+
+## Installation
+
+### Prerequisites
+
+- [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI) installed
+- Node.js 18+
+
+### Install a Workflow
+
+Navigate to the workflow directory and run the install script:
+
+**Linux/Mac:**
+```bash
+cd app-builder-workflow
+chmod +x install.sh
+./install.sh
 ```
 
-## 🚀 Usage
+**Windows (PowerShell):**
+```powershell
+cd app-builder-workflow
+.\install.ps1
+```
+
+The script will:
+1. Copy prompts to CodeMachine resources
+2. Copy workflow definitions
+3. Register agents in the configuration
+
+---
+
+## Usage
 
 After installation:
 
 ```bash
 cd your-project-directory
 codemachine start
-# Select "Spec-Driven Development"
 ```
+
+Select the installed workflow from the menu.
+
+---
+
+## Workflow Structure
+
+Each workflow contains:
+
+```
+workflow-name/
+  config/           # Agent configuration files
+  prompts/          # Agent prompt templates
+  templates/        # Workflow definition
+  install.sh        # Linux/Mac installer
+  install.ps1       # Windows installer
+  README.md         # Workflow documentation
+```
+
+---
+
+## Creating Custom Workflows
+
+Use these examples as templates for your own workflows. Key components:
+
+1. **Workflow Definition** (`templates/workflows/*.workflow.js`)
+   - Define steps, tracks, and sub-agents
+   - Configure interactive vs autonomous agents
+
+2. **Agent Prompts** (`prompts/templates/*/`)
+   - Define agent personality and behavior
+   - Specify input files and output artifacts
+   - Include directive output instructions
+
+3. **Agent Configuration** (`config/*.agents.js`)
+   - Register agents with IDs and prompt paths
+   - Configure role (controller, sub-agent, etc.)
+
