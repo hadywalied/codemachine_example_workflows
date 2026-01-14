@@ -1,6 +1,6 @@
 export default {
     name: 'Spec-Driven Development',
-    controller: true,
+    controller: controller('spec-po', {}),
     specification: false,
 
     tracks: {
