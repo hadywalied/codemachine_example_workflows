@@ -1,6 +1,12 @@
-# CodeMachine Workflow Examples
+# CodeMachine Example Workflows
 
 Example workflows for [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI).
+
+## Installation
+
+```bash
+codemachine import github.com/hadywalied/codemachine_example_workflows
+```
 
 ## Available Workflows
 
@@ -37,25 +43,6 @@ A more comprehensive workflow with detailed specifications.
 
 ---
 
-## Installation
-
-### Prerequisites
-
-- [CodeMachine CLI](https://github.com/moazbuilds/CodeMachine-CLI) installed
-- Node.js 18+
-
-### Import a Workflow
-
-```bash
-# Import App Builder workflow
-codemachine import github.com/moazbuilds/codemachine-workflows/app-builder-workflow
-
-# Import Spec-Driven workflow
-codemachine import github.com/moazbuilds/codemachine-workflows/spec-driven-workflow
-```
-
----
-
 ## Usage
 
 After importing:
@@ -65,43 +52,37 @@ cd your-project-directory
 codemachine start
 ```
 
-Select the imported workflow from the menu.
+Select the workflow from the menu.
 
 ---
 
-## Workflow Structure
-
-Each workflow follows the CodeMachine package convention:
+## Structure
 
 ```
-workflow-name/
-├── codemachine.json      # Package manifest (name, version)
+codemachine_example_workflows/
+├── codemachine.json              # Package manifest
 ├── config/
-│   ├── main.agents.js    # Main agent definitions
-│   ├── sub.agents.js     # Sub-agent definitions (optional)
-│   └── modules.js        # Reusable modules (optional)
-├── prompts/templates/    # Agent prompt files
-└── templates/workflows/  # Workflow definition files
+│   ├── main.agents.js            # All agent definitions
+│   ├── sub.agents.js             # Sub-agent definitions
+│   └── modules.js                # Reusable modules
+├── prompts/templates/
+│   ├── app-builder/              # App Builder prompts
+│   └── spec-driven/              # Spec-Driven prompts
+├── templates/workflows/
+│   ├── app-builder.workflow.js   # App Builder workflow
+│   └── spec-driven.workflow.js   # Spec-Driven workflow
+│
+├── app-builder-workflow/         # Standalone package (for local import)
+└── spec-driven-workflow/         # Standalone package (for local import)
 ```
 
 ---
 
 ## Creating Custom Workflows
 
-Use these examples as templates for your own workflows. Key components:
+Use these examples as templates. Key components:
 
-1. **Package Manifest** (`codemachine.json`)
-   - Required `name` and `version` fields
-   - Optional `description` and custom `paths`
-
-2. **Workflow Definition** (`templates/workflows/*.workflow.js`)
-   - Define steps, tracks, and sub-agents
-   - Configure interactive vs autonomous agents
-
-3. **Agent Prompts** (`prompts/templates/*/`)
-   - Define agent personality and behavior
-   - Specify input files and output artifacts
-
-4. **Agent Configuration** (`config/main.agents.js`)
-   - Register agents with IDs and prompt paths
-   - Configure role (controller, sub-agent, etc.)
+1. **Package Manifest** (`codemachine.json`) - name and version
+2. **Agents** (`config/main.agents.js`) - agent definitions with prompt paths
+3. **Prompts** (`prompts/templates/`) - agent behavior and instructions
+4. **Workflows** (`templates/workflows/*.workflow.js`) - step definitions
