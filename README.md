@@ -48,10 +48,10 @@ A more comprehensive workflow with detailed specifications.
 
 ```bash
 # Import App Builder workflow
-codemachine import github.com/moazbuilds/codemachine-workflows/app-builder-workflow
+codemachine import https://github.com/hadywalied/codemachine_example_workflows/app-builder-workflow
 
 # Import Spec-Driven workflow
-codemachine import github.com/moazbuilds/codemachine-workflows/spec-driven-workflow
+codemachine import https://github.com/hadywalied/codemachine_example_workflows/spec-driven-workflow
 ```
 
 ---
