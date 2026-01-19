@@ -2,7 +2,7 @@
 
 > A simple, conversational workflow to build apps with CodeMachine.
 
-## 🎯 What This Demonstrates
+## What This Demonstrates
 
 | Feature | How It's Used |
 |---------|---------------|
@@ -12,13 +12,14 @@
 | **Sub-agents** | Parallel code generation (UI, Logic, Tests) |
 | **Fix loop** | Tester finds issues → Developer fixes → Re-test |
 
-## 📁 Structure
+## Structure
 
 ```
-.codemachine_workflow/
+app-builder-workflow/
+├── codemachine.json              # Package manifest
 ├── config/
-│   ├── app-builder.agents.js     # Main agents
-│   └── app-builder.sub-agents.js # Sub-agents for code gen
+│   ├── main.agents.js            # Main agents
+│   └── sub.agents.js             # Sub-agents for code gen
 ├── prompts/templates/app-builder/
 │   ├── po.md                     # Product Owner
 │   ├── architect.md              # Technical Architect
@@ -33,17 +34,13 @@
     └── app-builder.workflow.js   # Workflow Definition
 ```
 
-## 🚀 Installation
+## Installation
 
 ```bash
-# Linux/Mac
-chmod +x install.sh && ./install.sh
-
-# Windows (PowerShell)
-.\install.ps1
+codemachine import github.com/moazbuilds/codemachine-workflows/app-builder-workflow
 ```
 
-## 🔄 Workflow
+## Workflow
 
 ```
 1. PO (Interactive)      → Gather requirements & tech decisions
@@ -58,10 +55,10 @@ chmod +x install.sh && ./install.sh
    ↓
 6. Tester (Auto + Loop)  → Validate, fix if needed
    ↓
-Done! 🎉
+Done!
 ```
 
-## 📝 Usage
+## Usage
 
 ```bash
 cd your-project-directory

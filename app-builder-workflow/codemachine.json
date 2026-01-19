@@ -1,0 +1,5 @@
+{
+  "name": "app-builder-workflow",
+  "version": "1.0.0",
+  "description": "App builder workflow with PO, Architect, Developer, and Tester agents"
+}

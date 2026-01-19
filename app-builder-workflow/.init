@@ -1,6 +1,0 @@
-# App Builder Workflow
-# This file marks this directory as a CodeMachine workflow example
-
-version: 1
-name: app-builder
-description: Simple conversational workflow to build React apps

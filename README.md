@@ -1,12 +1,12 @@
 # CodeMachine Workflow Examples
 
-Example workflows for [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI)
+Example workflows for [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI).
 
 ## Available Workflows
 
 ### App Builder Workflow
 
-A simple, conversational workflow to build React applications. Located in `app-builder-workflow/`.
+A simple, conversational workflow to build React applications.
 
 **Features:**
 - Interactive Product Owner gathers requirements through conversation
@@ -27,7 +27,7 @@ A simple, conversational workflow to build React applications. Located in `app-b
 
 ### Spec-Driven Development Workflow
 
-A more comprehensive workflow with detailed specifications. Located in `spec-driven-workflow/`.
+A more comprehensive workflow with detailed specifications.
 
 **Workflow Steps:**
 1. Discovery Phase: PO and Analyst gather requirements
@@ -41,58 +41,47 @@ A more comprehensive workflow with detailed specifications. Located in `spec-dri
 
 ### Prerequisites
 
-- [CodeMachine](https://github.com/moazbuilds/CodeMachine-CLI) installed
+- [CodeMachine CLI](https://github.com/moazbuilds/CodeMachine-CLI) installed
 - Node.js 18+
 
-### Install a Workflow
+### Import a Workflow
 
-Navigate to the workflow directory and run the install script:
-
-**Linux/Mac:**
 ```bash
-cd app-builder-workflow
-chmod +x install.sh
-./install.sh
-```
+# Import App Builder workflow
+codemachine import github.com/moazbuilds/codemachine-workflows/app-builder-workflow
 
-**Windows (PowerShell):**
-```powershell
-cd app-builder-workflow
-.\install.ps1
+# Import Spec-Driven workflow
+codemachine import github.com/moazbuilds/codemachine-workflows/spec-driven-workflow
 ```
-
-The script will:
-1. Copy prompts to CodeMachine resources
-2. Copy workflow definitions
-3. Register agents in the configuration
 
 ---
 
 ## Usage
 
-After installation:
+After importing:
 
 ```bash
 cd your-project-directory
 codemachine start
 ```
 
-Select the installed workflow from the menu.
+Select the imported workflow from the menu.
 
 ---
 
 ## Workflow Structure
 
-Each workflow contains:
+Each workflow follows the CodeMachine package convention:
 
 ```
 workflow-name/
-  config/           # Agent configuration files
-  prompts/          # Agent prompt templates
-  templates/        # Workflow definition
-  install.sh        # Linux/Mac installer
-  install.ps1       # Windows installer
-  README.md         # Workflow documentation
+├── codemachine.json      # Package manifest (name, version)
+├── config/
+│   ├── main.agents.js    # Main agent definitions
+│   ├── sub.agents.js     # Sub-agent definitions (optional)
+│   └── modules.js        # Reusable modules (optional)
+├── prompts/templates/    # Agent prompt files
+└── templates/workflows/  # Workflow definition files
 ```
 
 ---
@@ -101,16 +90,18 @@ workflow-name/
 
 Use these examples as templates for your own workflows. Key components:
 
-1. **Workflow Definition** (`templates/workflows/*.workflow.js`)
+1. **Package Manifest** (`codemachine.json`)
+   - Required `name` and `version` fields
+   - Optional `description` and custom `paths`
+
+2. **Workflow Definition** (`templates/workflows/*.workflow.js`)
    - Define steps, tracks, and sub-agents
    - Configure interactive vs autonomous agents
 
-2. **Agent Prompts** (`prompts/templates/*/`)
+3. **Agent Prompts** (`prompts/templates/*/`)
    - Define agent personality and behavior
    - Specify input files and output artifacts
-   - Include directive output instructions
 
-3. **Agent Configuration** (`config/*.agents.js`)
+4. **Agent Configuration** (`config/main.agents.js`)
    - Register agents with IDs and prompt paths
    - Configure role (controller, sub-agent, etc.)
-
